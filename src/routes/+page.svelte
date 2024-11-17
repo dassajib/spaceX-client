@@ -1,6 +1,7 @@
 <script>
 	import TableGridView from '../components/TableGridView/TableGridView.svelte';
 	import MapView from '../components/MapView/MapView.svelte';
+	import ChartView from '../components/ChartView/ChartView.svelte';
 </script>
 
 <main class="px-10 py-4">
@@ -19,6 +20,7 @@
 
 		<div class="w-full px-4 sm:w-2/6">
 			<MapView />
+			<ChartView />
 		</div>
 	</div>
 </main>

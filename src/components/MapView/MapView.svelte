@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import 'ol/ol.css';
 	import { Map, View } from 'ol';
+	import { Card } from 'flowbite-svelte';
 	import TileLayer from 'ol/layer/Tile';
 	import OSM from 'ol/source/OSM';
 	import Point from 'ol/geom/Point';
@@ -56,16 +57,18 @@
 	});
 </script>
 
-<div class="flex items-center justify-center py-8">
-	<div class="w-full max-w-4xl rounded-2xl bg-white shadow-lg">
-		<div class="border-b border-gray-200 p-4">
-			<h2 class="text-xl font-semibold text-gray-700">Map View</h2>
-		</div>
-		<div class="relative h-96 w-full">
-			<div id="map" class="absolute left-0 top-0 h-full w-full rounded-b-lg"></div>
+<Card>
+	<div class="flex items-center justify-center py-8">
+		<div class="w-full max-w-4xl rounded-2xl bg-white shadow-lg">
+			<div class="border-b border-gray-200 p-4">
+				<h2 class="text-xl font-semibold text-gray-700">Map View</h2>
+			</div>
+			<div class="relative h-96 w-full">
+				<div id="map" class="absolute left-0 top-0 h-full w-full rounded-b-lg"></div>
+			</div>
 		</div>
 	</div>
-</div>
+</Card>
 
 <style>
 	#map {
