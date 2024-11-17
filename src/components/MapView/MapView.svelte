@@ -56,7 +56,16 @@
 	});
 </script>
 
-<div id="map" class="h-96 w-full"></div>
+<div class="flex items-center justify-center py-8">
+	<div class="w-full max-w-4xl rounded-2xl bg-white shadow-lg">
+		<div class="border-b border-gray-200 p-4">
+			<h2 class="text-xl font-semibold text-gray-700">Map View</h2>
+		</div>
+		<div class="relative h-96 w-full">
+			<div id="map" class="absolute left-0 top-0 h-full w-full rounded-b-lg"></div>
+		</div>
+	</div>
+</div>
 
 <style>
 	#map {
