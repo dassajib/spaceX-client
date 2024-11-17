@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import {
+		Card,
 		Modal,
 		Spinner,
 		Button,
@@ -13,7 +14,8 @@
 		ChevronDownOutline,
 		ListOutline,
 		GridSolid,
-		LinkOutline
+		LinkOutline,
+		ArrowRightOutline
 	} from 'flowbite-svelte-icons';
 
 	import { fetchLandingPads } from '$lib/api';
@@ -44,9 +46,10 @@
 	});
 
 	// Update filteredPads when selectedStatus changes
-	$: filteredPads = selectedStatus === 'All'
-		? landingPads
-		: landingPads.filter((pad) => pad.status === selectedStatus);
+	$: filteredPads =
+		selectedStatus === 'All'
+			? landingPads
+			: landingPads.filter((pad) => pad.status === selectedStatus);
 
 	const openModal = (pad) => {
 		selectedPad = pad;
@@ -99,18 +102,36 @@
 			</div>
 		{:else if filteredPads.length === 0}
 			<p>No landing pads available for status: {selectedStatus}.</p>
+
+			<!-- Grid -->
 		{:else if isGridView}
 			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 				{#each filteredPads as pad}
-					<div class="card rounded-lg p-4 shadow-md">
-						<h3 class="mb-2 text-lg font-bold">{pad.full_name}</h3>
-						<p>{pad.location.region}</p>
-						<p>{pad.successful_landings}/{pad.attempted_landings}</p>
-						<p>{pad.details}</p>
-						<a href={pad.wikipedia} target="_blank" class="text-blue-500">More Info</a>
-					</div>
+					<Card>
+						<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+							{pad.full_name}
+						</h5>
+						<p class="mb-3 font-normal leading-tight text-gray-700 dark:text-gray-400">
+							Success Rate : {pad.attempted_landings > 0
+								? ((pad.successful_landings / pad.attempted_landings) * 100).toFixed(2)
+								: 'N/A'}
+						</p>
+						<p class="mb-3 font-normal leading-tight text-gray-700 dark:text-gray-400">
+							Region : {pad.location.region}
+						</p>
+						<p class="flex mb-3 font-normal leading-tight text-gray-700 dark:text-gray-400">
+							Website Link : <a href={pad.wikipedia} target="_blank" class="text-blue-500 ml-3">
+								<LinkOutline />
+							</a>
+						</p>
+						<Button class="w-fit" href={pad.wikipedia} target="_blank">
+							Read more <ArrowRightOutline class="ms-2 h-6 w-6 text-white" />
+						</Button>
+					</Card>
 				{/each}
 			</div>
+
+			<!-- table -->
 		{:else}
 			<table class="w-full table-auto border-collapse text-left">
 				<thead class="bg-gray-100">

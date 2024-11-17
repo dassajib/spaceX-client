@@ -4,23 +4,23 @@
 	import ChartView from '../components/ChartView/ChartView.svelte';
 </script>
 
-<main class="px-10 py-4">
-	<!-- Navbar -->
+<main class="px-4 py-4">
 	<nav class="text-white shadow-md">
 		<div class="flex h-16 items-center justify-center">
 			<img src="/logo.png" alt="Logo" class="w-auto" />
 		</div>
 	</nav>
 
-	<!-- Main Content -->
 	<div class="flex py-4">
-		<div class="flex w-full flex-col px-4 sm:w-4/6 sm:flex-row">
+		<div class="flex w-full flex-col px-2 sm:w-4/6 sm:flex-row">
 			<TableGridView />
 		</div>
 
 		<div class="w-full px-4 sm:w-2/6">
 			<MapView />
-			<ChartView />
+			<div class="mt-5">
+				<ChartView />
+			</div>
 		</div>
 	</div>
 </main>
