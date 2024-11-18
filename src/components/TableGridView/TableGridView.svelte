@@ -32,11 +32,10 @@
 	onMount(async () => {
 		try {
 			landingPads = await fetchLandingPads();
-			// Extract unique statuses
+			// extract unique statuses
 			statuses = Array.from(new Set(landingPads.map((pad) => pad.status)));
-			statuses.unshift('All'); // Add 'All' option for no filter
-
-			// Initially, show all pads
+			// add 'All' option for no filter
+			statuses.unshift('All');
 			filteredPads = landingPads;
 		} catch (error) {
 			console.error('Error fetching landing pads:', error);
@@ -45,7 +44,7 @@
 		}
 	});
 
-	// Update filteredPads when selectedStatus changes
+	// update filteredPads when selectedStatus changes
 	$: filteredPads =
 		selectedStatus === 'All'
 			? landingPads
@@ -83,7 +82,7 @@
 		<div>
 			<Button class="bg-gray-100 text-black">
 				<AdjustmentsVerticalSolid />
-				<span class="mx-3 ">Filter By Status</span>
+				<span class="mx-3">Filter By Status</span>
 				<ChevronDownOutline class="h-6 w-6 text-black" />
 			</Button>
 			<Dropdown>
@@ -104,7 +103,7 @@
 		{:else if filteredPads.length === 0}
 			<p>No landing pads available for status: {selectedStatus}.</p>
 
-			<!-- Grid -->
+			<!-- grid -->
 		{:else if isGridView}
 			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 				{#each filteredPads as pad}

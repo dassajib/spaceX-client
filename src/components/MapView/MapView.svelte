@@ -11,6 +11,7 @@
 	import { Icon, Style } from 'ol/style';
 	import { fromLonLat } from 'ol/proj';
 	import { Card } from 'flowbite-svelte';
+
 	import { fetchLandingPads } from '../../lib/api';
 
 	let map;
@@ -52,15 +53,15 @@
 				})
 			],
 			view: new View({
-				center: fromLonLat([-118.2437, 34.0522]), // Default center (Los Angeles)
+				// Default center (Los Angeles)
+				center: fromLonLat([-118.2437, 34.0522]), 
 				zoom: 6
 			})
 		});
 
 		try {
-			// Call fetchLandingPads from your API file and set the response
 			landingPads = await fetchLandingPads();
-			plotLandingPads(); // Plot landing pads after fetching the data
+			plotLandingPads();
 		} catch (error) {
 			console.error('Error fetching landing pads:', error);
 		}
