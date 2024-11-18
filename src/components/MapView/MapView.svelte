@@ -68,7 +68,8 @@
 </script>
 
 <Card>
-	<div id="map" class="h-[500px] w-full rounded-lg shadow-md"></div>
+	<h5 class="me-1 text-xl font-bold leading-none text-gray-900 dark:text-white">Map View</h5>
+	<div id="map" class="mt-4 h-[500px] w-full rounded-lg shadow-md"></div>
 </Card>
 
 <style>

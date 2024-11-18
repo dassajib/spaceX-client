@@ -1,4 +1,6 @@
 <script>
+	import { fetchLandingPads } from '$lib/api';
+	import { onMount } from 'svelte';
 	import {
 		Chart,
 		Card,
@@ -19,8 +21,10 @@
 		ShareNodesSolid
 	} from 'flowbite-svelte-icons';
 
+	let totalLandingPads = [];
+
 	const options = {
-		series: [35.1, 23.5, 2.4, 5.4],
+		series: [],
 		colors: ['#1C64F2', '#16BDCA', '#FDBA8C', '#E74694'],
 		chart: {
 			height: 320,
@@ -44,13 +48,10 @@
 						total: {
 							showAlways: true,
 							show: true,
-							label: 'Unique visitors',
+							label: 'Landing Pads',
 							fontFamily: 'Inter, sans-serif',
 							formatter: function (w) {
-								const sum = w.globals.seriesTotals.reduce((a, b) => {
-									return a + b;
-								}, 0);
-								return `${sum}k`;
+								return `${totalLandingPads}`;
 							}
 						},
 						value: {
@@ -71,7 +72,7 @@
 				top: -2
 			}
 		},
-		labels: ['Direct', 'Sponsor', 'Affiliate', 'Email marketing'],
+		labels: [],
 		dataLabels: {
 			enabled: false
 		},
@@ -100,6 +101,29 @@
 			}
 		}
 	};
+
+	// Fetch data from API and calculate rates
+	onMount(async () => {
+		try {
+			const response = await fetch('https://api.spacexdata.com/v3/landpads');
+			const data = await response.json();
+			totalLandingPads = data.length;
+			// series calculation
+			options.series = data.map((item) => {
+				if (!item.attempted_landings || item.attempted_landings === 0) {
+					// Handle invalid or zero attempted_landings
+					console.warn(`Invalid or zero attempted_landings for item: ${item.full_name}`);
+					return 0; // Or any fallback value
+				}
+				const successRate = (item.successful_landings / item.attempted_landings) * 100;
+				return successRate;
+			});
+
+			options.labels = data.map((item) => item.full_name);
+		} catch (error) {
+			console.error('Error fetching chart data:', error);
+		}
+	});
 </script>
 
 <Card>

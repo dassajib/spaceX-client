@@ -82,8 +82,9 @@
 		</div>
 		<div>
 			<Button class="bg-gray-100 text-black">
-				<AdjustmentsVerticalSolid />Filter By Status
-				<ChevronDownOutline class="ms-2 h-6 w-6 text-black" />
+				<AdjustmentsVerticalSolid />
+				<span class="mx-3 ">Filter By Status</span>
+				<ChevronDownOutline class="h-6 w-6 text-black" />
 			</Button>
 			<Dropdown>
 				{#each statuses as status}
@@ -119,8 +120,8 @@
 						<p class="mb-3 font-normal leading-tight text-gray-700 dark:text-gray-400">
 							Region : {pad.location.region}
 						</p>
-						<p class="flex mb-3 font-normal leading-tight text-gray-700 dark:text-gray-400">
-							Website Link : <a href={pad.wikipedia} target="_blank" class="text-blue-500 ml-3">
+						<p class="mb-3 flex font-normal leading-tight text-gray-700 dark:text-gray-400">
+							Website Link : <a href={pad.wikipedia} target="_blank" class="ml-3 text-blue-500">
 								<LinkOutline />
 							</a>
 						</p>
