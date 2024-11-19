@@ -12,7 +12,12 @@ npx sv create
 
 # create a new project in my-app
 npx sv create my-app
-```
+
+## Prerequisites
+Before starting, ensure you have the following installed on your machine:
+
+Node.js (v18 or higher)
+npm (v9 or higher) or Yarn (optional)
 
 ## Developing
 
