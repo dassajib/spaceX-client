@@ -12,12 +12,11 @@
 	import { fromLonLat } from 'ol/proj';
 	import { Card } from 'flowbite-svelte';
 
-	import { fetchLandingPads } from '$lib/api';
+	import { fetchLandingPads } from '../../lib/api';
 
 	let map;
 	let landingPads = [];
 
-	// Function to plot landing pads
 	const plotLandingPads = () => {
 		const vectorSource = new VectorSource();
 
@@ -45,7 +44,6 @@
 		map.addLayer(vectorLayer);
 	};
 
-	// Initialize the map on component mount
 	onMount(async () => {
 		map = new Map({
 			target: 'map',
