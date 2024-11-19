@@ -24,6 +24,12 @@
 </script>
 
 <main class="px-4 py-4">
+	<nav class="text-white shadow-md">
+		<div class="flex h-16 items-center justify-center">
+			<img src="/logo.png" alt="Logo" class="w-auto" />
+		</div>
+	</nav>
+	
 	<div class="flex py-4">
 		<div class="flex w-full flex-col px-2 sm:w-4/6 sm:flex-row">
 			<TableGridView {landingPads} {statuses} {isLoading} />
