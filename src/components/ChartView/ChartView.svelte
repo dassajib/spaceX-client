@@ -1,16 +1,7 @@
 <script>
 	import { fetchLandingPads } from '$lib/api';
 	import { onMount } from 'svelte';
-	import {
-		Chart,
-		Card,
-		A,
-		Button,
-		Dropdown,
-		DropdownItem,
-		Popover,
-		Tooltip
-	} from 'flowbite-svelte';
+	import { Chart, Card } from 'flowbite-svelte';
 	import {
 		InfoCircleSolid,
 		ArrowDownToBracketOutline,
@@ -107,6 +98,7 @@
 		}
 	};
 
+	// Fetch data when the component is mounted
 	onMount(async () => {
 		try {
 			const response = await fetchLandingPads();

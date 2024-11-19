@@ -124,7 +124,10 @@
 							<td class="border px-4 py-2 text-xs font-medium">{pad.location.name}</td>
 							<td class="border px-4 py-2 text-xs font-medium">{pad.location.region}</td>
 							<td class="border px-4 py-2 text-xs font-medium">
-								<button class="btn btn-sm btn-primary" on:click={() => openModal(pad)}>
+								<button
+									class="btn btn-sm btn-primary whitespace-nowrap rounded-md bg-gray-200 px-3 py-1"
+									on:click={() => openModal(pad)}
+								>
 									View Details
 								</button>
 							</td>
